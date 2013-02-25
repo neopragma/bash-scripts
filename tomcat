@@ -1,0 +1,22 @@
+#!/bin/bash
+# ================================================== 
+# Start, stop, or restart Tomcat given a system-wide
+# installation on Ubuntu Linux in the default location.
+#
+# Version 1.0
+# Dave Nicolette
+# License:
+# Creative Commons Attribution-ShareAlike 3.0 Unported
+# See http://creativecommons.org/licenses/by-sa/3.0/
+# ==================================================
+if [ $# -eq 0 ] || [ "$1" = "-h" ]
+then
+  echo
+  echo "Usage:"
+  echo "tomcat start"
+  echo "tomcat stop"
+  echo "tomcat restart"
+  echo
+  exit 0
+fi
+sudo /etc/init.d/tomcat6 $1

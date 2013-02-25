@@ -1,0 +1,17 @@
+#!/bin/bash
+# ================================================== 
+# Start a dummy X terminal as device 99 using
+# X-windows virtual frame buffer (Xvfb).
+#
+# Version 1.0
+# Dave Nicolette
+# License:
+# Creative Commons Attribution-ShareAlike 3.0 Unported
+# See http://creativecommons.org/licenses/by-sa/3.0/
+# ==================================================
+if [ $# -eq 0 ] || [ "$1" = "-h" ]
+then
+  echo -e "\nUsage:\nxvfb\n"
+  exit 0
+fi
+Xvfb :99 -ac > /dev/null 2>&1 &

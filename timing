@@ -1,0 +1,21 @@
+#!/bin/bash
+# ================================================== 
+# Get the approximate execution time of a process 
+# in milliseconds.
+#
+# Version 1.0
+# Dave Nicolette
+# License:
+# Creative Commons Attribution-ShareAlike 3.0 Unported
+# See http://creativecommons.org/licenses/by-sa/3.0/
+# ==================================================
+if [ $# -eq 0 ] || [ "$1" = "-h" ]
+then
+  echo -e "\nUsage:\ntiming [command line]\n"
+  exit
+fi
+STARTTIME=$(date +%s%N)
+eval $*
+ENDTIME=$(date +%s%N)
+MILLIS=$((${ENDTIME}-${STARTTIME}))
+echo "Elapsed time in milliseconds: $(($MILLIS/1000000))"
