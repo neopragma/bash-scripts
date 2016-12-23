@@ -1,0 +1,23 @@
+# cleanup script
+
+# delete downloaded .deb files that have been installed
+
+sudo apt -y clean
+
+# remove stored archives in your cache for packages that can not be downloaded anymore 
+
+sudo apt -y autoclean
+
+# remove unnecessary packages
+
+sudo apt -y autoremove
+
+# empty the /tmp directory
+
+pushd /tmp
+sudo rm *
+popd
+
+# remove unused kernel images
+
+sudo dpkg -l linux-* | awk '/^ii/{ print $2}' | grep -v -e `uname -r | cut -f1,2 -d"-"` | grep -e [0-9] | grep -E "(image|headers)" | xargs sudo apt purge
